@@ -9,7 +9,9 @@ This program simulates a cache using a given number of entries, associativity, a
 The program takes three command-line arguments:
 
 num_entries - the total number of cache entries
+
 associativity - the associativity of the cache
+
 memory_reference_file - a file containing memory references separated by spaces
 
 The simulator starts with an empty cache and reports whether each memory reference is a HIT or MISS. The results are written to a file named `cache_sim_output`.
