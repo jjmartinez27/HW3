@@ -55,9 +55,9 @@ int main(int argc, char* argv[]) {
         }
 
         if (hit) {
-            std::cout << address << " : HIT" << std::endl;
+            output_file << address << " : HIT" << std::endl;
         } else {
-            std::cout << address << " : MISS" << std::endl;
+            output_file << address << " : MISS" << std::endl;
 
             bool inserted = false;
 
