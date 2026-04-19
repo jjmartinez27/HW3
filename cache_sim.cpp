@@ -43,7 +43,21 @@ int main(int argc, char* argv[]) {
         int set_index = address % num_sets;
         int tag = address / num_sets;
 
-        std::cout << "Address: " << address << ", Set: " << set_index << ", Tag: " << tag << std::endl;
+        bool hit = false;
+
+        for (int i = 0; i < associativity; i++) {
+            if (cache[set_index][i].valid && cache[set_index][i].tag == tag) {
+                hit = true;
+                break;
+            }
+        }
+
+        if (hit) {
+            std::cout << address << " : HIT" << std::endl;
+        } else {
+            std::cout << address << " : MISS" << std::endl;
+        }
+
     }
 
     return 0;
