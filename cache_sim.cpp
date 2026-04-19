@@ -4,8 +4,8 @@
 #include <vector>
 
 struct CacheLine {
-  bool valid;
-  int tag;
+    bool valid;
+    int tag;
 };
 
 int main(int argc, char* argv[]) {
@@ -38,10 +38,10 @@ int main(int argc, char* argv[]) {
 
     std::vector<std::vector<CacheLine>> cache(num_sets, std::vector<CacheLine>(associativity, {false, -1}));
 
-    std::cout << "Number of entries: " << num_entries << std::endl;
-    std::cout << "Associativity: " << associativity << std::endl;
-    std::cout << "Number of sets: " << num_sets << std::endl;
-    std::cout << "Cache created successfully." << std::endl;
+    int address;
+    while (input_file >> address) {
+        std::cout << "Read address: " << address << std::endl;
+    }
 
-        return 0;
+    return 0;
 }
