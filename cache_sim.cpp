@@ -56,6 +56,14 @@ int main(int argc, char* argv[]) {
             std::cout << address << " : HIT" << std::endl;
         } else {
             std::cout << address << " : MISS" << std::endl;
+
+            for (int i = 0; i < associativity; i++) {
+                if (!cache[set_index][i].valid) {
+                    cache[set_index][i].valid = true;
+                    cache[set_index][i].tag = tag;
+                    break;
+                }
+            }
         }
 
     }
