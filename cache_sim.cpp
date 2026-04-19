@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
 
 struct CacheLine {
   bool valid;
@@ -33,16 +34,14 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    CacheLine test_line;
-    test_line.valid = false;
-    test_line.tag = -1;
+    int num_sets = num_entries / associativity;
+
+    std::vector<std::vector<CacheLine>> cache(num_sets, std::vector<CacheLine>(associativity, {false, -1}));
 
     std::cout << "Number of entries: " << num_entries << std::endl;
     std::cout << "Associativity: " << associativity << std::endl;
-    std::cout << "Memory reference file: " << memory_reference_file << std::endl;
-    std::cout << "Files opened successfully." << std::endl;
-    std::cout << "Test cache line -> valid: " << test_line.valid
-              << ", tag: " << test_line.tag << std::endl;
+    std::cout << "Number of sets: " << num_sets << std::endl;
+    std::cout << "Cache created successfully." << std::endl;
 
         return 0;
 }
