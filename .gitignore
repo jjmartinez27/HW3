@@ -1,4 +1,5 @@
 *.exe
 *.xml
 *.iml
+*.txt
 *.gitignore
