@@ -38,6 +38,8 @@ int main(int argc, char* argv[]) {
 
     std::vector<std::vector<CacheLine>> cache(num_sets, std::vector<CacheLine>(associativity, {false, -1}));
 
+    std::vector<int> next_replace(num_sets, 0);
+
     int address;
     while (input_file >> address) {
         int set_index = address % num_sets;
@@ -57,12 +59,21 @@ int main(int argc, char* argv[]) {
         } else {
             std::cout << address << " : MISS" << std::endl;
 
+            bool inserted = false;
+
             for (int i = 0; i < associativity; i++) {
                 if (!cache[set_index][i].valid) {
                     cache[set_index][i].valid = true;
                     cache[set_index][i].tag = tag;
                     break;
                 }
+            }
+            if (!inserted) {
+                int replace_index = next_replace[set_index];
+                cache[set_index][replace_index].tag = tag;
+                cache[set_index][replace_index].valid = true;
+                next_replace[set_index] =
+                    (next_replace[set_index] + 1) % associativity;
             }
         }
 
