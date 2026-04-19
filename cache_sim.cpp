@@ -65,6 +65,7 @@ int main(int argc, char* argv[]) {
                 if (!cache[set_index][i].valid) {
                     cache[set_index][i].valid = true;
                     cache[set_index][i].tag = tag;
+                    inserted = true;
                     break;
                 }
             }
