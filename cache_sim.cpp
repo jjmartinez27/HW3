@@ -2,6 +2,11 @@
 #include <string>
 #include <fstream>
 
+struct CacheLine {
+  bool valid;
+  int tag;
+};
+
 int main(int argc, char* argv[]) {
 
     if (argc !=4)
@@ -28,10 +33,16 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    CacheLine test_line;
+    test_line.valid = false;
+    test_line.tag = -1;
+
     std::cout << "Number of entries: " << num_entries << std::endl;
     std::cout << "Associativity: " << associativity << std::endl;
     std::cout << "Memory reference file: " << memory_reference_file << std::endl;
     std::cout << "Files opened successfully." << std::endl;
+    std::cout << "Test cache line -> valid: " << test_line.valid
+              << ", tag: " << test_line.tag << std::endl;
 
         return 0;
 }
