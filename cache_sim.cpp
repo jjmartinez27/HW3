@@ -40,7 +40,10 @@ int main(int argc, char* argv[]) {
 
     int address;
     while (input_file >> address) {
-        std::cout << "Read address: " << address << std::endl;
+        int set_index = address % num_sets;
+        int tag = address / num_sets;
+
+        std::cout << "Address: " << address << ", Set: " << set_index << ", Tag: " << tag << std::endl;
     }
 
     return 0;
